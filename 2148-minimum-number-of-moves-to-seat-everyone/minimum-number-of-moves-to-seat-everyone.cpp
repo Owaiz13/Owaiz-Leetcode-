@@ -6,11 +6,14 @@ public:
         sort(students.begin(),students.end());
         int i=0;
         int j=0;
-        while(i<students.size()){
+        // while(i<students.size()){
+        //     sum=sum+abs(students[i]-seats[i]);
+        //     i++;
+
+
+        // }
+        for(int i=0;i<students.size();i++){
             sum=sum+abs(students[i]-seats[i]);
-            i++;
-
-
         }
         return sum;
     }
