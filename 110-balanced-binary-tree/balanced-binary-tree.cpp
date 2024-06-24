@@ -15,30 +15,30 @@ class Solution {
 public:
 
     int height(TreeNode *root){
-        // base case
         if(root==NULL)
         return 0;
         int leftHeight=height(root->left);
         int rightHeight=height(root->right);
-        int ans=1+max(leftHeight,rightHeight);
+        int ans= 1+ max(leftHeight, rightHeight);
         return ans;
     }
-    bool isBalanced(TreeNode* root) {
-        if (root==NULL){
-            return true;
-        }
-        int leftHeight=height(root->left);
-        int rightHeight=height(root->right);
-        int diff=abs(leftHeight-rightHeight);
 
-        bool ans1=(diff<=1);
+    bool isBalanced(TreeNode* root) {
+       if(root==NULL)
+       return true;
+
+       int leftHeight=height(root->left);
+       int rightHeight=height(root->right);
+       int diff= abs(leftHeight-rightHeight);
+       bool ans1=(diff <=1);
+    //    if(diff<=1){
+    //     ans1=true;
+    //    }
         bool leftAns=isBalanced(root->left);
         bool rightAns=isBalanced(root->right);
-
-        if(ans1 && leftAns && rightAns)
-        return true;
-        else
-        return false;
-         
+       if(ans1 && leftAns && rightAns)
+       return true;
+       else
+       return false;
     }
 };
