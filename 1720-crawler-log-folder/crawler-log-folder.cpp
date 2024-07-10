@@ -4,16 +4,12 @@ public:
         stack<int>s;
         for(auto i:logs){
             if(i=="../"){
-                if(s.empty()){
-                    continue;
-                }
-                else{
-                    s.pop();
-                }
+                if(s.empty())continue;
+                s.pop();
+                
             }
-            else if(i=="./"){
-                continue;
-            }
+            else if(i=="./")continue;
+            
             else{
                 s.push(1);
             }
