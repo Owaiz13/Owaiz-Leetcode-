@@ -1,39 +1,39 @@
-#include <vector>
-#include <algorithm>
-
-using namespace std;
-
 class Solution {
 public:
     vector<int> luckyNumbers (vector<vector<int>>& matrix) {
-        vector<int> result;
-        int m = matrix.size();
-        int n = matrix[0].size();
+        
+        vector<int>min;
+        
+        vector<int>max;
+        for(int i=0;i<matrix.size();i++){
+            int mini=INT_MAX;
+            for(int j=0;j<matrix[0].size();j++){
+                if(matrix[i][j]<mini){
+                    mini=matrix[i][j];
+                }
 
-        // Step 1: Find the minimum element in each row
-        vector<int> minRow(m);
-        for (int i = 0; i < m; ++i) {
-            minRow[i] = *min_element(matrix[i].begin(), matrix[i].end());
+            }
+            min.push_back(mini);
         }
+        for(int i=0;i<matrix[0].size();i++){
+            int maxi=INT_MIN;
+            for(int j=0;j<matrix.size();j++){
+                if(matrix[j][i]>maxi){
+                    maxi=matrix[j][i];
+                }
 
-        // Step 2: Check if the minimum element in each row is the maximum in its column
-        for (int i = 0; i < m; ++i) {
-            for (int j = 0; j < n; ++j) {
-                if (matrix[i][j] == minRow[i]) {
-                    bool isMaxInCol = true;
-                    for (int k = 0; k < m; ++k) {
-                        if (matrix[k][j] > matrix[i][j]) {
-                            isMaxInCol = false;
-                            break;
-                        }
-                    }
-                    if (isMaxInCol) {
-                        result.push_back(matrix[i][j]);
-                    }
+            }
+            max.push_back(maxi);
+        }
+        vector<int>ans;
+        for(int i=0;i<min.size();i++){
+            for(int j=0;j<max.size();j++){
+                if(min[i]==max[j]){
+                    ans.push_back(min[i]);
                 }
             }
         }
+        return ans;
 
-        return result;
     }
 };
